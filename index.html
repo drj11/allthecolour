@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<script>
+x = 7 + 9
+newDiv = function(col) {
+  var d = document.createElement('div')
+  d.style.height = "100px"
+  d.style.backgroundColor = col
+  document.getElementsByTagName('body')[0].appendChild(d)
+}
+randomColour = function() {
+  return [Math.random(), Math.random(), Math.random()]
+}
+colourAsString = function(c) {
+  var s = 'rgb('
+  for(var i=0; 3>i; ++i) {
+    if(i) { s+=',' }
+    s += 0|(c[i]*255)
+  }
+  s += ')'
+  return s
+}
+moar = function() {
+  var c = randomColour()
+  newDiv(colourAsString(c))
+}
+document.addEventListener('click', moar)
+</script>
+</body>
+</html>
