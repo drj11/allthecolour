@@ -17,7 +17,7 @@ colourAsString = function(c) {
   var s = 'rgb('
   for(var i=0; 3>i; ++i) {
     if(i) { s+=',' }
-    s += 0|(c[i]*255)
+    s += 0|(c[i]*256)
   }
   s += ')'
   return s
