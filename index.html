@@ -4,7 +4,12 @@
 </head>
 <body style="margin: 0 6%">
 <script>
+m = undefined
 newDiv = function(col) {
+  if(m) {
+    m.parentElement.removeChild(m)
+    m = undefined
+  }
   var d = document.createElement('div')
   d.style.height = "100px"
   d.style.backgroundColor = col
@@ -23,10 +28,24 @@ colourAsString = function(c) {
   return s
 }
 moar = function() {
+  window.clearTimeout(timer)
   var c = randomColour()
   newDiv(colourAsString(c))
 }
+
+sayClick = function() {
+  m = document.createElement('div')
+  m.style.height = "100px"
+  m.style.borderWidth = "1px"
+  m.style.borderColor = "gray"
+  m.style.borderStyle = "solid"
+  m.style.textAlign = "center"
+  m.innerHTML = '<div style="height: 50%"></div><span style="line-height: 0; vertical-align: top;">click or tap</span>'
+  document.getElementsByTagName('body')[0].appendChild(m)
+}
+
 document.addEventListener('click', moar)
+timer = window.setTimeout(sayClick, 5000)
 </script>
 </body>
 </html>
